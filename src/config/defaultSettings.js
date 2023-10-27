@@ -9,7 +9,6 @@ export default {
     colorWeak: false,
     multiTab: false,
     production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
-    // vue-ls options, localStorage中默认的存储前缀
     storageOptions: {
       namespace: 'pro__', // key prefix
       name: 'ls', // name variable Vue.[ls] or this.[$ls],

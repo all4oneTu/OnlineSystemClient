@@ -37,17 +37,14 @@ const user = {
       Login({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
           login(userInfo).then(response => {
-            console.log('进入Login方法')
+            console.log('Login')
           if (response.code === 0) {
-            const token = response.data
-            // 把接口返回的token字段的值设置到localStorage的token键值对中，token的有效期是1天,Vue.ls中的ls是localStorage的意思
+            const token = response.data     
             Vue.ls.set(ACCESS_TOKEN, token, 24 * 60 * 60 * 1000)
-            // 设置token事件,修改全局变量state中的token值，讲mutations中的SET_TOKEN事件
             commit('SET_TOKEN', token)
             resolve()
           } else {
-            // 自定义错误
-            reject(new Error('用户名或密码错误'))
+            reject(new Error('Tên người dùng hoặc mật khẩu sai'))
           }
         }).catch(error => {
           console.log(error)
@@ -56,19 +53,19 @@ const user = {
       })
     },
 
-    // 获取用户信息
+  
     GetInfo ({ commit }) {
       return new Promise((resolve, reject) => {
         getInfo().then(response => {
-          console.log('/user/info的响应如下：')
+          console.log('/user/info：')
           console.log(response)
-          const result = response.data // 取出响应体
+          const result = response.data 
 
-          if (result.role && result.role.permissions.length > 0) { // 如果权限
+          if (result.role && result.role.permissions.length > 0) { 
             const role = result.role
-            console.log('role的值如下：')
+            console.log('role：')
             console.log(role)
-            role.permissions = result.role.permissions // permissions是给页面行为设置权限
+            role.permissions = result.role.permissions 
             role.permissions.map(per => {
               if (per.actionEntitySet != null && per.actionEntitySet.length > 0) {
                 const action = per.actionEntitySet.map(action => {
@@ -77,20 +74,16 @@ const user = {
                 per.actionList = action
               }
             })
-            role.permissionList = role.permissions.map(permission => { // permissionList是从permissions中遍历解析得来的
+            role.permissionList = role.permissions.map(permission => { 
               return permission.permissionId
-            })
-
-            // 这些设置都在Vuex的getters里面了
-            commit('SET_ROLES', result.role) // 在store中设置用户的权限
-            commit('SET_INFO', result) // 在store中设置用户信息
+            })   
+            commit('SET_ROLES', result.role) 
+            commit('SET_INFO', result)
           } else {
             reject(new Error('getInfo: roles must be a non-null array !'))
           }
-
-          // 这些设置都在Vuex的getters里面了
-          commit('SET_NAME', { name: result.name, welcome: welcome() }) // 设置用户名称
-          commit('SET_AVATAR', result.avatar) // 设置用户头像
+          commit('SET_NAME', { name: result.name, welcome: welcome() }) 
+          commit('SET_AVATAR', result.avatar) 
 
           resolve(response)
         }).catch(error => {
@@ -100,7 +93,6 @@ const user = {
     },
 
 
-    // 登出
     Logout ({ commit, state }) {
       return new Promise((resolve) => {
         commit('SET_TOKEN', '')

@@ -4,8 +4,6 @@ import { constantRouterMap } from '../config/router.config'
 
 Vue.use(VueRouter)
 
-
-
 const router = new VueRouter({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
