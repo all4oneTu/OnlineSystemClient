@@ -1,0 +1,1 @@
+import '../core/lazy_lib/component_use'
