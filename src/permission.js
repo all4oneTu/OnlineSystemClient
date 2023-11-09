@@ -45,10 +45,12 @@ router.beforeEach((to, from, next) => {
                             const redirect = decodeURIComponent(from.query.redirect || to.path)
                             if (to.path === redirect) {
                               // phương thức hack để đảm bảo addRoutes đã được hoàn thành, đặt thay thế: true để điều hướng sẽ không để lại bản ghi lịch sử
-                                next({ ...to, replace: true })
+                                // next({ ...to, replace: true })
+                                router.push({ path: redirect })
                             } else {   
                                     //Chuyển đến tuyến đường đích
-                                next({ path: redirect })
+                                // next({ path: redirect })
+                                router.push({ path: redirect })
                             }
                         })
                     })

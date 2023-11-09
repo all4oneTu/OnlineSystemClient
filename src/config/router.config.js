@@ -1,5 +1,5 @@
-import { UserLayout, BasicLayout, RouteView } from "@/layouts";
-
+import { UserLayout, BasicLayout, RouteView, PageView } from "@/layouts";
+import { examList, questionAdmin, examAdmin } from "../core/icons";
 export const constantRouterMap = [
   {
     path: "/user",
@@ -58,57 +58,57 @@ export const asyncRouterMap = [
         ],
       },
 
-      // {
-      //   path: '/exam-card',
-      //   name: 'exam-card',
-      //   redirect: '/list/exam-card',
-      //   component: PageView,
-      //   hideChildrenInMenu: true,
-      //   meta: { title: 'Exam', keepAlive: true, icon: examList, permission: ['exam-card'] },
-      //   children: [
-      //     {
-      //       path: '/list/exam-card',
-      //       name: 'ExamCardList',
-      //       component: () => import('../views/list/ExamCardList'),
-      //       meta: { title: 'Exam List', keepAlive: true, permission: ['exam-card'] }
-      //     }
-      //   ]
-      // },
-      // {
-      //   path: '/question-admin',
-      //   name: 'question-admin',
-      //   redirect: '/list/question-table-list',
-      //   component: PageView,
-      //   hideChildrenInMenu: true,
-      //   meta: { title: 'Question Admin', keepAlive: true, icon: questionAdmin, permission: ['question-admin'] },
-      //   children: [
-      //     {
-      //       path: '/list/question-table-list',
-      //       name: 'QuestionTableListWrapper',
-      //       hideChildrenInMenu: true,
-      //       component: () => import('../views/list/QuestionTableList'),
-      //       meta: { title: 'Question List', keepAlive: true, permission: ['question-admin'] }
-      //     }
-      //   ]
-      // },
+      {
+        path: '/exam-card',
+        name: 'exam-card',
+        redirect: '/list/exam-card',
+        component: PageView,
+        hideChildrenInMenu: true,
+        meta: { title: 'Exam', keepAlive: true, icon: examList, permission: ['exam-card'] },
+        children: [
+          {
+            path: '/list/exam-card',
+            name: 'ExamCardList',
+            component: () => import('../views/list/ExamCardList'),
+            meta: { title: 'Exam List', keepAlive: true, permission: ['exam-card'] }
+          }
+        ]
+      },
+      {
+        path: '/question-admin',
+        name: 'question-admin',
+        redirect: '/list/question-table-list',
+        component: PageView,
+        hideChildrenInMenu: true,
+        meta: { title: 'Question Admin', keepAlive: true, icon: questionAdmin, permission: ['question-admin'] },
+        children: [
+          {
+            path: '/list/question-table-list',
+            name: 'QuestionTableListWrapper',
+            hideChildrenInMenu: true,
+            component: () => import('../views/list/QuestionTableList'),
+            meta: { title: 'Question List', keepAlive: true, permission: ['question-admin'] }
+          }
+        ]
+      },
       // list
-      // {
-      //   path: '/list/exam-table-list',
-      //   name: 'exam-table-list',
-      //   component: PageView,
-      //   redirect: '/list/exam-table-list',
-      //   hideChildrenInMenu: true,
-      //   meta: { title: 'Exam Admin', icon: examAdmin, permission: ['exam-table-list'] },
-      //   children: [
-      //     {
-      //       path: '/list/exam-table-list',
-      //       name: 'ExamTableListWrapper',
-      //       hideChildrenInMenu: true,
-      //       component: () => import('../views/list/ExamTableList'),
-      //       meta: { title: 'Exam List', keepAlive: true, permission: ['exam-table-list'] }
-      //     }
-      //   ]
-      // },
+      {
+        path: '/list/exam-table-list',
+        name: 'exam-table-list',
+        component: PageView,
+        redirect: '/list/exam-table-list',
+        hideChildrenInMenu: true,
+        meta: { title: 'Exam Admin', icon: examAdmin, permission: ['exam-table-list'] },
+        children: [
+          {
+            path: '/list/exam-table-list',
+            name: 'ExamTableListWrapper',
+            hideChildrenInMenu: true,
+            component: () => import('../views/list/ExamTableList'),
+            meta: { title: 'Exam List', keepAlive: true, permission: ['exam-table-list'] }
+          }
+        ]
+      },
       // {
       //   path: '/exam-record-list',
       //   name: 'exam-record-list',

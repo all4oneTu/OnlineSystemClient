@@ -1,5 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
-
+const webpack = require('webpack')
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 module.exports = defineConfig({
@@ -9,7 +9,12 @@ module.exports = defineConfig({
   transpileDependencies: true,
   configureWebpack: {
     plugins: [
-      new NodePolyfillPlugin()
+      new NodePolyfillPlugin(),
+      // new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery'
+      })
     ],
     module: {
       rules: [
@@ -24,7 +29,7 @@ module.exports = defineConfig({
   devServer: {
     // development server port 8000
     port: 8080,
-    proxy: 'http://localhost:9526'
+    proxy: 'http://localhost:9527'
   },
   css: {
     loaderOptions: {
