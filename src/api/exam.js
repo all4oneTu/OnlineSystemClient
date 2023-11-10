@@ -36,3 +36,19 @@ export function getQuestionSelection () {
     }
   })
 }
+
+export function getExamAll () {
+  return axios({
+    url: api.ExamAll,
+    method: 'get'
+  })
+}
+
+export function examUpdate (parameter) {
+  console.log(parameter)
+  return axios({
+    url: api.ExamUpdate,
+    method: 'post',
+    data: parameter
+  })
+}
