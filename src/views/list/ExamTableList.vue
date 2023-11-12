@@ -10,11 +10,9 @@
         :data="tableData"
         :options="options"
       />
-      <!-- ref是为了方便用this.$refs.modal直接引用，下同 -->
-      <!-- <step-by-step-exam-modal ref="createExamModal" @ok="handleOk" /> -->
-      <!-- 这里的详情需要传进去  -->
+    
+      <step-by-step-exam-modal ref="createExamModal" @ok="handleOk" />
       <!-- <exam-edit-modal ref="editExamModal" @ok="handleOk" /> -->
-      <!--  更新考试封面图片  -->
       <update-avatar-modal ref="updateAvatarModal" @ok="handleOk" />
     </a-card>
   </template>
@@ -22,7 +20,7 @@
   <script>
   import '../../plugins/bootstrap-table'
   import { getExamAll } from '../../api/exam'
-//   import StepByStepExamModal from './modules/StepByStepExamModal'
+  import StepByStepExamModal from './modules/StepByStepExamModal'
 //   import ExamEditModal from './modules/ExamEditModal'
   import UpdateAvatarModal from './modules/UpdateAvatarModal'
   
@@ -31,7 +29,7 @@
     components: {
       UpdateAvatarModal,
     //   ExamEditModal,
-    //   StepByStepExamModal
+      StepByStepExamModal
     },
     data () {
       const that = this 
