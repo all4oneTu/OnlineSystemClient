@@ -105,26 +105,26 @@ export const asyncRouterMap = [
             name: 'ExamTableListWrapper',
             hideChildrenInMenu: true,
             component: () => import('../views/list/ExamTableList'),
-            meta: { title: 'Exam List', keepAlive: true, permission: ['exam-table-list'] }
+            meta: { title: 'Exam Admin', keepAlive: true, permission: ['exam-table-list'] }
           }
         ]
       },
-      // {
-      //   path: '/exam-record-list',
-      //   name: 'exam-record-list',
-      //   redirect: '/list/exam-record-list',
-      //   component: PageView,
-      //   hideChildrenInMenu: true,
-      //   meta: { title: 'My Exam Record', keepAlive: true, icon: 'user', permission: ['exam-record-list'] },
-      //   children: [
-      //     {
-      //       path: '/list/exam-record-list',
-      //       name: 'ExamRecordList',
-      //       component: () => import('../views/list/ExamRecordList'),
-      //       meta: { title: 'List Of Test', keepAlive: true, permission: ['exam-record-list'] }
-      //     }
-      //   ]
-      // },
+      {
+        path: '/exam-record-list',
+        name: 'exam-record-list',
+        redirect: '/list/exam-record-list',
+        component: PageView,
+        hideChildrenInMenu: true,
+        meta: { title: 'My Exam Record', keepAlive: true, icon: 'user', permission: ['exam-record-list'] },
+        children: [
+          {
+            path: '/list/exam-record-list',
+            name: 'ExamRecordList',
+            component: () => import('../views/list/ExamRecordList'),
+            meta: { title: 'List Of Test', keepAlive: true, permission: ['exam-record-list'] }
+          }
+        ]
+      },
       // account
       // {
       //   path: '/account',

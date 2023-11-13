@@ -57,6 +57,8 @@
       },
       handleUpdate () {
         const that = this
+        console.log('Update')
+        console.log($('#summernote-exam-avatar').summernote('code'))
         that.exam.avatar = $('#summernote-exam-avatar').summernote('code')
         examUpdate(that.exam).then(res => {
           // Jump to the results page if successful

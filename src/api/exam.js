@@ -52,3 +52,21 @@ export function examUpdate (parameter) {
     data: parameter
   })
 }
+export function getExamQuestionTypeList () {
+  return axios({
+    url: api.ExamQuestionTypeList,
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  })
+}
+
+export function examCreate (parameter) {
+  console.log(parameter)
+  return axios({
+    url: api.ExamCreate,
+    method: 'post',
+    data: parameter
+  })
+}
