@@ -166,4 +166,8 @@ export const asyncRouterMap = [
     redirect: "/404",
     hidden: true,
   },
+  {
+    path: '/exam/:id',
+    component: () => import(/* webpackChunkName: "fail" */ '../views/list/ExamDetail')
+  },
 ];

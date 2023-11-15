@@ -8,6 +8,7 @@ import { VueAxios } from './utils/request'
 
 import './core/use'
 import bootstrap from './core/bootstrap'
+import './utils/filter' 
 import './permission' // permission control
 Vue.config.productionTip = false
 Vue.use(VueAxios)

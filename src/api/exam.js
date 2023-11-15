@@ -70,3 +70,21 @@ export function examCreate (parameter) {
     data: parameter
   })
 }
+export function getExamDetail (examId) {
+  return axios({
+    url: api.ExamDetail + examId,
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  })
+}
+export function getQuestionDetail (questionId) {
+  return axios({
+    url: api.QuestionDetail + questionId,
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  })
+}
