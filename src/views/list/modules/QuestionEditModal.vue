@@ -2,22 +2,25 @@
     <a-modal title="Chỉnh sửa câu hỏi" :width="640" :visible="visible" :confirmLoading="confirmLoading" @cancel="handleCancel">
       <a-spin :spinning="confirmLoading">
         <a-form :form="form">
-          <h3><b>Nội dung câu hỏi：</b></h3>
+          <h3><b>Tên câu hỏi：</b></h3>
           <div id="summernote-question-name-edit" />
-          <ul v-show="question.type==='多选题'">
+          <h3><b>
+            Nội dung câu hỏi：</b></h3>
+          <div id="summernote-question-desc-edit" />
+          <ul v-show="question.type==='Câu hỏi nhiều lựa chọn'">
             <li v-for="option in question.options" :key="option.id">
               <a-input v-model="option.content" />
             </li>
           </ul>
   
-          <ul v-show="question.type!=='多选题'">
+          <ul v-show="question.type!=='Câu hỏi nhiều lựa chọn'">
             <li v-for="option in question.options" :key="option.id">
               <a-input v-model="option.content" />
             </li>
           </ul>
   
           <h3><b>Đáp án：</b></h3>
-          <ul v-show="question.type!=='多选题'">
+          <ul v-show="question.type!=='Câu hỏi nhiều lựa chọn'">
             <li>
               <a-select :size="size" :value="answerOptionId" style="width: 100%" @change="handleSingleChange">
                 <a-select-option v-for="option in question.options" :key="option.id">
@@ -27,7 +30,7 @@
             </li>
           </ul>
   
-          <ul v-show="question.type==='多选题'">
+          <ul v-show="question.type==='Câu hỏi nhiều lựa chọn'">
             <li>
               <a-select
                 mode="multiple"
@@ -44,9 +47,9 @@
               </a-select>
             </li>
           </ul>
-          <h3><b>
-            Phân tích cú pháp：</b></h3>
-          <div id="summernote-question-desc-edit" />
+          <!-- <h3><b>
+            Nội dung câu hỏi：</b></h3>
+          <div id="summernote-question-desc-edit" /> -->
         </a-form>
       </a-spin>
       <template slot="footer">
@@ -95,7 +98,7 @@
         $('#' + divId).summernote({
           lang: 'vi-VN',
           placeholder: 'Vui lòng nhập nội dung',
-          height: 200,
+          height: 100,
           width: '100%',
           htmlMode: true,
           toolbar: [

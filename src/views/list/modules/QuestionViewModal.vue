@@ -2,8 +2,11 @@
     <a-modal title="Thông tin câu hỏi" :width="640" :visible="visible" :confirmLoading="confirmLoading" @cancel="handleCancel">
       <a-spin :spinning="confirmLoading">
         <a-form :form="form">
-          <h3><b>Thân câu hỏi：</b></h3>
+          <h3><b>Tên câu hỏi：</b></h3>
           <div v-html="question.name"></div>
+          <br>
+          <h3><b>Nội dung câu hỏi：</b></h3>
+          <div v-html="question.description"></div>
           <br>
           <h3><b>Tùy chọn：</b></h3>
           <ul>
@@ -14,9 +17,9 @@
           <ul>
             <li v-for="option in question.options" :key="option.id" v-show="option.answer===true" v-html="option.content"/>
           </ul>
-          <br>
-          <h3><b>Phân tích cú pháp：</b></h3>
-          <div v-html="question.description"></div>
+          <!-- <br>
+          <h3><b>Nội dung câu hỏi：</b></h3>
+          <div v-html="question.description"></div> -->
         </a-form>
       </a-spin>
       <template slot="footer">

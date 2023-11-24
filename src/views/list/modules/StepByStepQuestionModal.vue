@@ -10,10 +10,10 @@
           <!-- step1 -->
           <div v-show="currentStep === 0">
             <a-form-item label="
-            Tên" :labelCol="labelColName" :wrapperCol="wrapperColName">
+            Nội dung" :labelCol="labelColName" :wrapperCol="wrapperColName">
               <div id="summernote-question-name"></div>
             </a-form-item>
-            <a-form-item label="Nội dung" :labelCol="labelColName" :wrapperCol="wrapperColName">
+            <a-form-item label="Phân tích" :labelCol="labelColName" :wrapperCol="wrapperColName">
               <div id="summernote-question-desc"></div>
             </a-form-item>
           </div>

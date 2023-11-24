@@ -88,3 +88,32 @@ export function getQuestionDetail (questionId) {
     }
   })
 }
+export function getExamRecordList () {
+  return axios({
+    url: api.ExamRecordList,
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  })
+}
+export function finishExam (examId, answersMap) {
+  console.log(answersMap)
+  return axios({
+    url: api.FinishExam + examId,
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+    data: answersMap
+  })
+}
+
+export function questionCreate (parameter) {
+  console.log(parameter)
+  return axios({
+    url: api.ExamQuestionCreate,
+    method: 'post',
+    data: parameter
+  })
+}

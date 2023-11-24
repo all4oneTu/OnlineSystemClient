@@ -63,7 +63,7 @@ export default {
           }
         },
         {
-          title: 'Phân tích',
+          title: 'Nội dung câu hỏi',
           field: 'description',
           width: 200,
           // eslint-disable-next-line no-unused-vars
@@ -73,7 +73,7 @@ export default {
           events: {
             // eslint-disable-next-line no-unused-vars
             'click .question-desc': function (e, value, row, index) {
-              that.$refs.questionUpdateModal.edit('summernote-question-desc-update', row, 'description', 'Cập nhật phân tích câu hỏi', questionUpdate)
+              that.$refs.questionUpdateModal.edit('summernote-question-desc-update', row, 'description', 'Cập nhật nội dung câu hỏi', questionUpdate)
             }
           }
         },

@@ -61,7 +61,7 @@ router.beforeEach((to, from, next) => {
                         })
                         console.log(error)
                         store.dispatch('Logout').then(() => {
-                            next({ path: '/user/login', query: { redirect: to.fullPath } })
+                            router.push({ path: '/user/login', query: { redirect: to.fullPath } })
                         })
                     })
             } else {

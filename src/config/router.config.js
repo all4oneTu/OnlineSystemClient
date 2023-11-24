@@ -19,6 +19,11 @@ export const constantRouterMap = [
         component: () =>
           import(/* webpackChunkName: "user" */ "../views/user/Register"),
       },
+      {
+        path: 'register-result',
+        name: 'registerResult',
+        component: () => import(/* webpackChunkName: "user" */ '../views/user/RegisterResult')
+      }
     ],
   },
 ];
@@ -170,4 +175,8 @@ export const asyncRouterMap = [
     path: '/exam/:id',
     component: () => import(/* webpackChunkName: "fail" */ '../views/list/ExamDetail')
   },
+  {
+    path: '/exam/record/:exam_id/:record_id',
+    component: () => import(/* webpackChunkName: "fail" */ '../views/list/ExamRecordDetail')
+  }
 ];

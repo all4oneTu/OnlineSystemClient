@@ -26,7 +26,7 @@
               <span slot="title" v-if="examDetail.exam"><a-icon type="check-circle" theme="twoTone"/>Câu hỏi trắc nghiệm (mỗi câu hỏi{{ examDetail.exam.examScoreRadio }}điểm)</span>
               <a-menu-item v-for="(item, index) in examDetail.radioIds" :key="item" @click="getQuestionDetail(item)">
                 <a-icon type="eye" theme="twoTone" twoToneColor="#52c41a" v-if="answersMap.get(item)"/>
-                Đề tài{{ index + 1 }}
+                Câu hỏi{{ index + 1 }}
               </a-menu-item>
             </a-sub-menu>
             <a-sub-menu key="question_check">
@@ -34,14 +34,14 @@
                 Câu hỏi trắc nghiệm (mỗi câu hỏi{{ examDetail.exam.examScoreCheck }}Điểm)</span>
               <a-menu-item v-for="(item, index) in examDetail.checkIds" :key="item" @click="getQuestionDetail(item)">
                 <a-icon type="eye" theme="twoTone" twoToneColor="#52c41a" v-if="answersMap.get(item)"/>
-                Đề tài{{ index + 1 }}
+                Câu hỏi{{ index + 1 }}
               </a-menu-item>
             </a-sub-menu>
             <a-sub-menu key="question_judge">
               <span slot="title" v-if="examDetail.exam"><a-icon type="like" theme="twoTone"/>Câu hỏi Đúng hay Sai (mỗi câu hỏi {{ examDetail.exam.examScoreJudge }}Điểm)</span>
               <a-menu-item v-for="(item, index) in examDetail.judgeIds" :key="item" @click="getQuestionDetail(item)">
                 <a-icon type="eye" theme="twoTone" twoToneColor="#52c41a" v-if="answersMap.get(item)"/>
-                Đề tài{{ index + 1 }}
+                Câu hỏi{{ index + 1 }}
               </a-menu-item>
             </a-sub-menu>
           </a-menu>
@@ -51,16 +51,17 @@
             <div :style="{ padding: '24px', background: '#fff',height: '84vh'}">
               <span v-show="currentQuestion === ''" style="font-size: 30px;font-family: Consolas">
                 Chào mừng các bạn tham gia thi, các bạn hãy bấm vào số câu hỏi bên trái để bắt đầu trả lời câu hỏi</span>
-              <strong>{{ currentQuestion.type }} </strong> <p v-html="currentQuestion.name"></p>
+              <strong>{{ currentQuestion.type }} </strong> <p v-html="currentQuestion.description
+              "></p>
              <!-- Câu hỏi một lựa chọn và câu hỏi đúng-sai --> <!-- Khóa chỉ cần được đảm bảo trong vòng lặp for để đảm bảo rằng khóa không bị lặp lại -->
-              <a-radio-group @change="onRadioChange" v-model="radioValue" v-if="currentQuestion.type === '单选题' || currentQuestion.type === '判断题'">
+              <a-radio-group @change="onRadioChange" v-model="radioValue" v-if="currentQuestion.type === 'Câu hỏi 1 lựa chọn' || currentQuestion.type === 'Câu hỏi đúng sai'">
                 <a-radio v-for="option in currentQuestion.options" :key="option.questionOptionId" :style="optionStyle" :value="option.questionOptionId">
                   {{ option.questionOptionContent }}
                 </a-radio>
               </a-radio-group>
   
-              <!-- 多选题 -->
-              <a-checkbox-group @change="onCheckChange" v-model="checkValues" v-if="currentQuestion.type === '多选题'">
+        
+              <a-checkbox-group @change="onCheckChange" v-model="checkValues" v-if="currentQuestion.type === 'Câu hỏi nhiều lựa chọn'">
                 <a-checkbox v-for="option in currentQuestion.options" :key="option.questionOptionId" :style="optionStyle" :value="option.questionOptionId">
                   {{ option.questionOptionContent }}
                 </a-checkbox>
@@ -128,10 +129,11 @@
           .then(res => {
             if (res.code === 0) {
               that.currentQuestion = res.data
+              console.log(that.currentQuestion)
               if (that.answersMap.get(that.currentQuestion.id)) {
-                if (that.currentQuestion.type === '单选题' || that.currentQuestion.type === '判断题') {
+                if (that.currentQuestion.type === 'Câu hỏi 1 lựa chọn' || that.currentQuestion.type === 'Câu hỏi đúng sai') {
                   that.radioValue = that.answersMap.get(that.currentQuestion.id)[0]
-                } else if (that.currentQuestion.type === '多选题') {
+                } else if (that.currentQuestion.type === 'Câu hỏi nhiều lựa chọn') {
                   Object.assign(that.checkValues, that.answersMap.get(that.currentQuestion.id))
                 }
               }
