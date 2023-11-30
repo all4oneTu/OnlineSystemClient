@@ -131,38 +131,38 @@ export const asyncRouterMap = [
         ]
       },
       // account
-      // {
-      //   path: '/account',
-      //   component: RouteView,
-      //   redirect: '/account/center',
-      //   name: 'account',
-      //   hidden: true,
-      //   meta: { title: 'User Info', icon: 'user', keepAlive: true, permission: ['user'] },
-      //   children: [
-      //     {
-      //       path: '/account/settings',
-      //       name: 'settings',
-      //       component: () => import('../views/account/settings/Index'),
-      //       meta: { title: 'User Setting', hideHeader: true, permission: ['user'] },
-      //       redirect: '/account/settings/base',
-      //       hideChildrenInMenu: true,
-      //       children: [
-      //         {
-      //           path: '/account/settings/base',
-      //           name: 'BaseSettings',
-      //           component: () => import('../views/account/settings/BaseSetting'),
-      //           meta: { title: 'Base Setting', hidden: true, permission: ['user'] }
-      //         },
-      //         {
-      //           path: '/account/settings/custom',
-      //           name: 'CustomSettings',
-      //           component: () => import('../views/account/settings/Custom'),
-      //           meta: { title: 'Custom Setting', hidden: true, keepAlive: true, permission: ['user'] }
-      //         }
-      //       ]
-      //     }
-      //   ]
-      // }
+      {
+        path: '/account',
+        component: RouteView,
+        redirect: '/account/center',
+        name: 'account',
+        hidden: true,
+        meta: { title: 'User Info', icon: 'user', keepAlive: true, permission: ['user'] },
+        children: [
+          {
+            path: '/account/settings',
+            name: 'settings',
+            component: () => import('../views/account/settings/Index'),
+            meta: { title: 'User Setting', hideHeader: true, permission: ['user'] },
+            redirect: '/account/settings/base',
+            hideChildrenInMenu: true,
+            children: [
+              {
+                path: '/account/settings/base',
+                name: 'BaseSettings',
+                component: () => import('../views/account/settings/BaseSetting'),
+                meta: { title: 'Base Setting', hidden: true, permission: ['user'] }
+              },
+              {
+                path: '/account/settings/custom',
+                name: 'CustomSettings',
+                component: () => import('../views/account/settings/Custom'),
+                meta: { title: 'Custom Setting', hidden: true, keepAlive: true, permission: ['user'] }
+              }
+            ]
+          }
+        ]
+      }
     ],
   },
   {

@@ -60,15 +60,14 @@
                 <strong style="color: red;" v-if="!questionRight">Bạn trả lời sai câu này rồi!</strong>
               </span>
               <br><br>
-              <!-- 单选题和判断题 --> <!-- key不重复只需要在一个for循环中保证即可 -->
-              <a-radio-group v-model="radioValue" v-if="currentQuestion.type === '单选题' || currentQuestion.type === '判断题'">
+
+              <a-radio-group v-model="radioValue" v-if="currentQuestion.type === 'Câu hỏi 1 lựa chọn' || currentQuestion.type === 'Câu hỏi đúng sai'">
                 <a-radio v-for="option in currentQuestion.options" :key="option.questionOptionId" :style="optionStyle" :value="option.questionOptionId">
                   {{ option.questionOptionContent }}
                 </a-radio>
               </a-radio-group>
-  
-              <!-- 题目出错的时候才显示这块 -->
-              <div v-if="!questionRight && currentQuestion!=='' && (currentQuestion.type === '单选题' || currentQuestion.type === '判断题')">
+
+              <div v-if="!questionRight && currentQuestion!=='' && (currentQuestion.type === 'Câu hỏi 1 lựa chọn' || currentQuestion.type === 'Câu hỏi đúng sai')">
                 <span style="color: red;"><br/>Đáp án đúng là:<br/></span>
                 <a-radio-group v-model="radioRightValue">
                   <a-radio v-for="option in currentQuestion.options" :key="option.questionOptionId" :style="optionStyle" :value="option.questionOptionId">
@@ -77,15 +76,13 @@
                 </a-radio-group>
               </div>
   
-              <!-- 多选题 -->
-              <a-checkbox-group v-model="checkValues" v-if="currentQuestion.type === '多选题'">
+              <a-checkbox-group v-model="checkValues" v-if="currentQuestion.type === 'Câu hỏi nhiều lựa chọn'">
                 <a-checkbox v-for="option in currentQuestion.options" :key="option.questionOptionId" :style="optionStyle" :value="option.questionOptionId">
                   {{ option.questionOptionContent }}
                 </a-checkbox>
               </a-checkbox-group>
-  
-              <!-- 题目出错的时候才显示这块 -->
-              <div v-if="!questionRight && currentQuestion!=='' && currentQuestion.type === '多选题'">
+
+              <div v-if="!questionRight && currentQuestion!=='' && currentQuestion.type === 'Câu hỏi nhiều lựa chọn'">
                 <span style="color: red;"><br/>Đáp án đúng là：<br/></span>
                 <a-checkbox-group v-model="checkRightValues">
                   <a-checkbox v-for="option in currentQuestion.options" :key="option.questionOptionId" :style="optionStyle" :value="option.questionOptionId">
@@ -116,25 +113,15 @@
     },
     data () {
       return {
-        // 考试详情对象
         examDetail: {},
-        // 考试记录详情对象
         recordDetail: {},
-        // 用户做过的问题都放到这个数组中，键为问题id, 值为currentQuestion(其属性answers属性用于存放答案选项地id或ids),，用于存放用户勾选的答案
         answersMap: {},
-        // 题目的正确答案
         answersRightMap: {},
-        // 题目的作答结果(正确或错误)
         resultsMap: {},
-        // 当前用户的问题
         currentQuestion: '',
-        // 单选或判断题的绑定值，用于从answersMap中初始化做题状态
         radioValue: '',
-        // 单选题的正确答案，用于从answersRightMap中初始化做题状态
         radioRightValue: '',
-        // 多选题的绑定值，用于从answersMap中初始化做题状态
         checkValues: [],
-        // 多选题的绑定值，用于从answersRightMap中初始化做题状态
         checkRightValues: [],
         optionStyle: {
           display: 'block',
@@ -145,9 +132,6 @@
       }
     },
     computed: {
-      /**
-       * 当前题目用户是否作答正确
-       * */
       questionRight () {
         return this.resultsMap !== '' && this.resultsMap.get(this.currentQuestion.id) === 'True'
       }
@@ -157,11 +141,9 @@
       this.answersRightMap = new Map()
       this.resultsMap = new Map()
       const that = this
-      // 从后端获取考试的详细信息，渲染到考试详情里,需要加个延时，要不拿不到参数
       getExamDetail(this.$route.params.exam_id)
         .then(res => {
           if (res.code === 0) {
-            // 赋值考试对象
             that.examDetail = res.data
             return res.data
           } else {
@@ -171,14 +153,11 @@
             })
           }
         })
-      // 查看考试记录详情，渲染到前端界面
       getExamRecordDetail(this.$route.params.record_id)
         .then(res => {
           if (res.code === 0) {
             console.log(res.data)
-            // 赋值考试对象
             that.recordDetail = res.data
-            // 赋值用户的作答答案
             that.objToMap()
             return res.data
           } else {
@@ -190,11 +169,7 @@
         })
     },
     methods: {
-      // 从全局变量中获取用户昵称和头像,
       ...mapGetters(['nickname', 'avatar']),
-      /**
-       * 把后端传过来的对象Object转换成Map
-       **/
       objToMap () {
         for (const item in this.recordDetail.answersMap) {
           this.answersMap.set(item, this.recordDetail.answersMap[item])
@@ -209,9 +184,7 @@
         }
       },
       getQuestionDetail (questionId) {
-        // 问题切换时从后端拿到问题详情，渲染到前端content中
         const that = this
-        // 清空问题绑定的值
         this.radioValue = ''
         this.radioRightValue = ''
         this.checkValues = []
@@ -219,16 +192,12 @@
         getQuestionDetail(questionId)
           .then(res => {
             if (res.code === 0) {
-              // 赋值当前考试对象
               that.currentQuestion = res.data
-              // 查看用户是不是已经做过这道题又切换回来的，answersMap中查找，能找到这个题目id对应的值数组不为空说明用户做过这道题
               if (that.answersMap.get(that.currentQuestion.id)) {
-                // 说明之前做过这道题了
-                if (that.currentQuestion.type === '单选题' || that.currentQuestion.type === '判断题') {
+                if (that.currentQuestion.type === 'Câu hỏi 1 lựa chọn' || that.currentQuestion.type === 'Câu hỏi đúng sai') {
                   that.radioValue = that.answersMap.get(that.currentQuestion.id)[0]
                   that.radioRightValue = that.answersRightMap.get(that.currentQuestion.id)[0]
-                } else if (that.currentQuestion.type === '多选题') {
-                  // 数组是引用类型，因此需要进行拷贝，千万不要直接赋值
+                } else if (that.currentQuestion.type === 'Câu hỏi nhiều lựa chọn') {
                   Object.assign(that.checkValues, that.answersMap.get(that.currentQuestion.id))
                   Object.assign(that.checkRightValues, that.answersRightMap.get(that.currentQuestion.id))
                 }

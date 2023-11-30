@@ -14,7 +14,7 @@
   </template>
   
   <script>
-  import { Result } from '../../components'
+  import { Result } from '../../components/Result'
   
   export default {
     name: 'RegisterResult',

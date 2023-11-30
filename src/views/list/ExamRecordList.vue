@@ -13,7 +13,7 @@
             <div slot="actions">
               <a @click="viewExamRecordDetail(item.examRecord)">Xem chi tiết bài thi</a>
             </div>
-            <div class="list-content">
+            <div class="list-content">`
               <div class="list-content-item">
                 <span>Owner</span>
                 <p>{{ item.user.userUsername }}</p>

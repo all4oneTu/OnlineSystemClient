@@ -117,3 +117,12 @@ export function questionCreate (parameter) {
     data: parameter
   })
 }
+export function getExamRecordDetail (recordId) {
+  return axios({
+    url: api.recordDetail + recordId,
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  })
+}

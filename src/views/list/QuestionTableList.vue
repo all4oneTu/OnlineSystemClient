@@ -48,7 +48,7 @@ export default {
           }
         },
         {
-          title: 'Tên câu hỏi',
+          title: 'Nội dung câu hỏi',
           field: 'name',
           width: 200,
           // eslint-disable-next-line no-unused-vars
@@ -63,7 +63,7 @@ export default {
           }
         },
         {
-          title: 'Nội dung câu hỏi',
+          title: 'Phân tích đáp án',
           field: 'description',
           width: 200,
           // eslint-disable-next-line no-unused-vars

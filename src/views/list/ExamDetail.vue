@@ -51,7 +51,7 @@
             <div :style="{ padding: '24px', background: '#fff',height: '84vh'}">
               <span v-show="currentQuestion === ''" style="font-size: 30px;font-family: Consolas">
                 Chào mừng các bạn tham gia thi, các bạn hãy bấm vào số câu hỏi bên trái để bắt đầu trả lời câu hỏi</span>
-              <strong>{{ currentQuestion.type }} </strong> <p v-html="currentQuestion.description
+              <strong>{{ currentQuestion.type }} </strong> <p v-html="currentQuestion.name
               "></p>
              <!-- Câu hỏi một lựa chọn và câu hỏi đúng-sai --> <!-- Khóa chỉ cần được đảm bảo trong vòng lặp for để đảm bảo rằng khóa không bị lặp lại -->
               <a-radio-group @change="onRadioChange" v-model="radioValue" v-if="currentQuestion.type === 'Câu hỏi 1 lựa chọn' || currentQuestion.type === 'Câu hỏi đúng sai'">
