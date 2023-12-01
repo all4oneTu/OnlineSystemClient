@@ -11,7 +11,7 @@
           <a-step title="
           Mô tả bài kiểm tra"/>
           <a-step title="Điểm câu hỏi"/>
-          <a-step title="Chọn chủ đề"/>
+          <a-step title="Chọn câu hỏi"/>
         </a-steps>
         <a-form :form="form">
           <!-- step1 -->
@@ -53,7 +53,7 @@
           </div>
           <div v-show="currentStep === 1">
             <a-form-item
-              label="Câu trắc nghiệm"
+              label="Câu hỏi 1 lựa chọn"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol"
             >
@@ -66,7 +66,7 @@
             </a-form-item>
   
             <a-form-item
-              label="Câu hỏi trắc nghiệm"
+              label="Câu hỏi nhiều lựa chọn"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol"
             >
@@ -94,7 +94,7 @@
   
           <div v-show="currentStep === 2">
             <a-form-item
-              label="Chọn câu hỏi trắc nghiệm"
+              label="Chọn câu hỏi 1 đáp án"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol"
               enterButton="Search"
@@ -103,7 +103,7 @@
               <a-select
                 mode="multiple"
                 :size="size"
-                placeholder="Vui lòng chọn câu hỏi trắc nghiệm"
+                placeholder="Vui lòng chọn câu hỏi 1 đáp án"
                 style="width: 100%"
                 @popupScroll="popupScroll"
                 @change="handleRadioChange"
@@ -115,7 +115,7 @@
             </a-form-item>
   
             <a-form-item
-              label="Chọn câu hỏi trắc nghiệm"
+              label="Chọn câu hỏi nhiều đáp án"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol"
               enterButton="Search"
@@ -124,7 +124,7 @@
               <a-select
                 mode="multiple"
                 :size="size"
-                placeholder="Vui lòng chọn câu hỏi trắc nghiệm"
+                placeholder="Vui lòng chọn câu hỏi nhiều đáp án"
                 style="width: 100%"
                 @popupScroll="popupScroll"
                 @change="handleCheckChange"

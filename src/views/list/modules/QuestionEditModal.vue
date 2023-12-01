@@ -2,10 +2,10 @@
     <a-modal title="Chỉnh sửa câu hỏi" :width="640" :visible="visible" :confirmLoading="confirmLoading" @cancel="handleCancel">
       <a-spin :spinning="confirmLoading">
         <a-form :form="form">
-          <h3><b>Tên câu hỏi：</b></h3>
+          <h3><b>Nội dung câu hỏi：</b></h3>
           <div id="summernote-question-name-edit" />
           <h3><b>
-            Nội dung câu hỏi：</b></h3>
+             Phân tích đáp án：</b></h3>
           <div id="summernote-question-desc-edit" />
           <ul v-show="question.type==='Câu hỏi nhiều lựa chọn'">
             <li v-for="option in question.options" :key="option.id">

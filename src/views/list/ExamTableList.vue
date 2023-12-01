@@ -12,7 +12,7 @@
       />
     
       <step-by-step-exam-modal ref="createExamModal" @ok="handleOk" />
-      <!-- <exam-edit-modal ref="editExamModal" @ok="handleOk" /> -->
+      <exam-edit-modal ref="editExamModal" @ok="handleOk" />
       <update-avatar-modal ref="updateAvatarModal" @ok="handleOk" />
     </a-card>
   </template>
@@ -21,14 +21,14 @@
   import '../../plugins/bootstrap-table'
   import { getExamAll } from '../../api/exam'
   import StepByStepExamModal from './modules/StepByStepExamModal'
-//   import ExamEditModal from './modules/ExamEditModal'
+  import ExamEditModal from './modules/ExamEditModal'
   import UpdateAvatarModal from './modules/UpdateAvatarModal'
   
   export default {
     name: 'ExamTableList',
     components: {
       UpdateAvatarModal,
-    //   ExamEditModal,
+      ExamEditModal,
       StepByStepExamModal
     },
     data () {
@@ -69,7 +69,7 @@
             field: 'creator'
           },
           {
-            title: 'Thời gian tạo',
+            title: 'Thời gian',
             field: 'elapse'
           },
           {
@@ -83,8 +83,8 @@
             formatter: () => {
               return `
                 <div class="btn-group">
-                  <button type="button" class="btn btn-success view-question mr-1 text-nowrap">Chi tiết</button>
-                  <button type="button" class="btn btn-success edit-question text-nowrap">Chỉnh sửa</button>
+                  <button type="button" class="btn btn-success view-exam mr-1 text-nowrap">Chi tiết</button>
+                  <button type="button" class="btn btn-success edit-exam text-nowrap">Chỉnh sửa</button>
                 </div>
               `;
             },

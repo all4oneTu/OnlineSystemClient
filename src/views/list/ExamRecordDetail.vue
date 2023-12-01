@@ -29,7 +29,7 @@
               <a-menu-item v-for="(item, index) in examDetail.radioIds" :key="item" @click="getQuestionDetail(item)">
                 <a-icon type="check" v-if="resultsMap.get(item)==='True'"/>
                 <a-icon type="close" v-if="resultsMap.get(item)==='False'"/>
-               Đề tài{{ index + 1 }}
+               Câu hỏi {{ index + 1 }}
               </a-menu-item>
             </a-sub-menu>
             <a-sub-menu key="question_check">
@@ -37,7 +37,7 @@
               <a-menu-item v-for="(item, index) in examDetail.checkIds" :key="item" @click="getQuestionDetail(item)">
                 <a-icon type="check" v-if="resultsMap.get(item)==='True'"/>
                 <a-icon type="close" v-if="resultsMap.get(item)==='False'"/>
-                Đề tài{{ index + 1 }}
+                Câu hỏi {{ index + 1 }}
               </a-menu-item>
             </a-sub-menu>
             <a-sub-menu key="question_judge">
@@ -45,7 +45,7 @@
               <a-menu-item v-for="(item, index) in examDetail.judgeIds" :key="item" @click="getQuestionDetail(item)">
                 <a-icon type="check" v-if="resultsMap.get(item)==='True'"/>
                 <a-icon type="close" v-if="resultsMap.get(item)==='False'"/>
-                Đề tài{{ index + 1 }}
+                Câu hỏi {{ index + 1 }}
               </a-menu-item>
             </a-sub-menu>
           </a-menu>

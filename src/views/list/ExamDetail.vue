@@ -8,7 +8,7 @@
           <span style="font-size:15px;">{{ examDetail.exam.examDescription }} </span>
         </span>
         <span style="float: right;">
-          <span style="margin-right: 60px; font-size: 20px" v-if="examDetail.exam">Giới hạn thời gian thi：{{ examDetail.exam.examTimeLimit }}Phút ở đây là đếm ngược</span>
+          <span style="margin-right: 60px; font-size: 20px" v-if="examDetail.exam">Thời gian thi：{{ examDetail.exam.examTimeLimit }} Phút </span>
           <a-button type="danger" ghost style="margin-right: 60px;" @click="finishExam()">Nộp bài</a-button>
           <a-avatar class="avatar" size="small" :src="avatar()"/>
           <span style="margin-left: 12px">{{ nickname() }}</span>
@@ -26,7 +26,7 @@
               <span slot="title" v-if="examDetail.exam"><a-icon type="check-circle" theme="twoTone"/>Câu hỏi trắc nghiệm (mỗi câu hỏi{{ examDetail.exam.examScoreRadio }}điểm)</span>
               <a-menu-item v-for="(item, index) in examDetail.radioIds" :key="item" @click="getQuestionDetail(item)">
                 <a-icon type="eye" theme="twoTone" twoToneColor="#52c41a" v-if="answersMap.get(item)"/>
-                Câu hỏi{{ index + 1 }}
+                Câu hỏi {{ index + 1 }}
               </a-menu-item>
             </a-sub-menu>
             <a-sub-menu key="question_check">
@@ -34,14 +34,14 @@
                 Câu hỏi trắc nghiệm (mỗi câu hỏi{{ examDetail.exam.examScoreCheck }}Điểm)</span>
               <a-menu-item v-for="(item, index) in examDetail.checkIds" :key="item" @click="getQuestionDetail(item)">
                 <a-icon type="eye" theme="twoTone" twoToneColor="#52c41a" v-if="answersMap.get(item)"/>
-                Câu hỏi{{ index + 1 }}
+                Câu hỏi {{ index + 1 }}
               </a-menu-item>
             </a-sub-menu>
             <a-sub-menu key="question_judge">
               <span slot="title" v-if="examDetail.exam"><a-icon type="like" theme="twoTone"/>Câu hỏi Đúng hay Sai (mỗi câu hỏi {{ examDetail.exam.examScoreJudge }}Điểm)</span>
               <a-menu-item v-for="(item, index) in examDetail.judgeIds" :key="item" @click="getQuestionDetail(item)">
                 <a-icon type="eye" theme="twoTone" twoToneColor="#52c41a" v-if="answersMap.get(item)"/>
-                Câu hỏi{{ index + 1 }}
+                Câu hỏi {{ index + 1 }}
               </a-menu-item>
             </a-sub-menu>
           </a-menu>

@@ -2,10 +2,10 @@
     <a-modal title="Thông tin câu hỏi" :width="640" :visible="visible" :confirmLoading="confirmLoading" @cancel="handleCancel">
       <a-spin :spinning="confirmLoading">
         <a-form :form="form">
-          <h3><b>Tên câu hỏi：</b></h3>
+          <h3><b>Nội dung câu hỏi：</b></h3>
           <div v-html="question.name"></div>
           <br>
-          <h3><b>Nội dung câu hỏi：</b></h3>
+          <h3><b>Phân tích đáp án：</b></h3>
           <div v-html="question.description"></div>
           <br>
           <h3><b>Tùy chọn：</b></h3>

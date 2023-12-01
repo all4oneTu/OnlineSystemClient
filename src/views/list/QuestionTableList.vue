@@ -58,7 +58,7 @@ export default {
           events: {
             // eslint-disable-next-line no-unused-vars
             'click .question-name': function (e, value, row, index) {
-              that.$refs.questionUpdateModal.edit('summernote-question-name-update', row, 'name', 'Cập nhật tên câu hỏi', questionUpdate)
+              that.$refs.questionUpdateModal.edit('summernote-question-name-update', row, 'name', 'Cập nhật nội dung câu hỏi', questionUpdate)
             }
           }
         },
@@ -73,7 +73,7 @@ export default {
           events: {
             // eslint-disable-next-line no-unused-vars
             'click .question-desc': function (e, value, row, index) {
-              that.$refs.questionUpdateModal.edit('summernote-question-desc-update', row, 'description', 'Cập nhật nội dung câu hỏi', questionUpdate)
+              that.$refs.questionUpdateModal.edit('summernote-question-desc-update', row, 'description', 'Cập nhật phân tích đáp án', questionUpdate)
             }
           }
         },
@@ -86,10 +86,10 @@ export default {
           },
           events: {
             // eslint-disable-next-line no-unused-vars
-            'click .question-score': function (e, value, row, index) {
-              const $element = $(e.target)
-              $element.html('<input type="text" value="' + value + '">')
-            }
+            // 'click .question-score': function (e, value, row, index) {
+            //   const $element = $(e.target)
+            //   $element.html('<input type="text" value="' + value + '">')
+            // }
           }
         },
         {

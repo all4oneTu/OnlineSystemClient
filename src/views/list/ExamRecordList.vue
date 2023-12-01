@@ -10,10 +10,10 @@
               <a-avatar slot="avatar" size="large" shape="square" :src="item.exam.examAvatar | imgSrcFilter"/>
               <a slot="title">{{ item.exam.examName }}</a>
             </a-list-item-meta>
-            <div slot="actions">
+            <div slot="actions" class="view-detail">
               <a @click="viewExamRecordDetail(item.examRecord)">Xem chi tiết bài thi</a>
             </div>
-            <div class="list-content">`
+            <div class="list-content">
               <div class="list-content-item">
                 <span>Owner</span>
                 <p>{{ item.user.userUsername }}</p>
@@ -81,4 +81,33 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+  .ant-avatar-lg {
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+  }
+
+  .list-content-item {
+    color: rgba(0, 0, 0, .45);
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    margin-left: 40px;
+
+    span {
+      line-height: 20px;
+    }
+
+    p {
+      margin-top: 4px;
+      margin-bottom: 0;
+      line-height: 22px;
+    }
+  }
+  .view-detail {
+    color: #1890ff;
+  }
+</style>
   
